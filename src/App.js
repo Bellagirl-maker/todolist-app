@@ -8,10 +8,19 @@ function App() {
     setNewTask(event.target.value) 
 };
   const addTask = () => {
-    setTodoList = ([...todoList, newTask])
+    setTodoList([...todoList, newTask])
   };
 
-  const deleteTask = ()
+  const deleteTask = (taskName) => {
+    const newTodoList = todoList.filter((task) =>{
+      if (task === taskName){
+        return false;
+      } else {
+        return true;
+      }
+    });
+    setTodoList(newTodoList)
+  }
   
 
   return (
@@ -25,17 +34,17 @@ function App() {
           return(
             <div>
               <h1>{task}</h1>
-              <button onClick={() => deleteTask(task)}></button>
+              <button onClick={() => deleteTask(task)}>X</button>
             </div>
           )
 
-
-        }
+        })}
 
       </div>
       
     </div>
   );
+  
 }
 
 export default App;
