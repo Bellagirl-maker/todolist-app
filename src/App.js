@@ -6,16 +6,31 @@ function App() {
   const [newTask, setNewTask] = useState("");
   const handleChange =(event) => {
     setNewTask(event.target.value) 
-}
+};
+  const addTask = () => {
+    setTodoList = ([...todoList, newTask])
+  };
+
+  const deleteTask = ()
   
 
   return (
     <div className="App">
       <div className='addTask'>
         <input onChange={handleChange}></input>
-        <button>Add Task</button>
+        <button onClick={addTask}>Add Task</button>
       </div>
       <div className='lists'>
+        {todoList.map((task) =>{
+          return(
+            <div>
+              <h1>{task}</h1>
+              <button onClick={() => deleteTask(task)}></button>
+            </div>
+          )
+
+
+        }
 
       </div>
       
