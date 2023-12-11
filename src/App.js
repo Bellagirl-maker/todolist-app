@@ -8,12 +8,16 @@ function App() {
     setNewTask(event.target.value) 
 };
   const addTask = () => {
-    setTodoList([...todoList, newTask])
+    const task = {
+      id: todoList.length === 0 ? 1 :todoList[todoList.length - 1].id + 1,
+      taskName: newTask
+    }
+    setTodoList([...todoList, task])
   };
 
-  const deleteTask = (taskName) => {
+  const deleteTask = (id) => {
    
-    setTodoList(todoList.filter((task) => task !== taskName));
+    setTodoList(todoList.filter((task) => task.id !== id));
   }
   
 
@@ -27,8 +31,8 @@ function App() {
         {todoList.map((task) =>{
           return(
             <div>
-              <h1>{task}</h1>
-              <button onClick={() => deleteTask(task)}>X</button>
+              <h1>{task.taskName}</h1>
+              <button onClick={() => deleteTask(task.id)}>X</button>
             </div>
           )
 
